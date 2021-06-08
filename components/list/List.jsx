@@ -52,7 +52,7 @@ export function List() {
   };
 
   const resetFilters = () => {
-    setFilters(DEFAULT_FILTERS);
+    setFilter(DEFAULT_FILTERS);
   };
 
   return (
