@@ -14,22 +14,20 @@ export function List() {
     }, new Set())
   );
 
-  console.log("Sorting on:", sort);
-
   //do some processing on the data based of state values and perhaps 'cache' the result
-  const processedData = data;
+  const filteredData = data;
+  const sortedData = filteredData;
 
+  //actions
   const changeSort = (s) => {
     setSort(s);
-  };
-
-  const applyFilters = () => {
-    console.log("Applying filters");
   };
 
   const resetFilters = () => {
     console.log("Resetting filters");
   };
+
+  console.log("Sorting on:", sort);
 
   return (
     <div>
@@ -73,7 +71,6 @@ export function List() {
             </article>
           </li>
         </ul>
-        <Button onClick={applyFilters}>Apply filters</Button>
         <Button className="alt" onClick={resetFilters}>
           Reset filters
         </Button>
@@ -98,7 +95,7 @@ export function List() {
           </tr>
         </thead>
         <tbody>
-          {processedData.map((pokemon) => (
+          {sortedData.map((pokemon) => (
             <tr key={pokemon.id}>
               <td>{pokemon.name.english}</td>
               <td>{pokemon.type.join(",")}</td>
