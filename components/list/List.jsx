@@ -1,18 +1,11 @@
 import styled from "@emotion/styled";
 import React from "react";
+import useData from "./useData";
 
 export function List() {
-  const [data, setData] = React.useState([]);
+  const data = useData();
   const [sort, setSort] = React.useState("");
-  React.useEffect(() => {
-    fetch("/pokedex.json")
-      .then((r) => r.json())
-      .then((json) => {
-        setData(json);
-      });
-  }, []);
 
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
   // this could be cached somehow
   const pokemonTypes = Array.from(
     data.reduce((types, pokemon) => {
@@ -173,6 +166,8 @@ const Table = styled.table`
     padding: 4px 8px;
 
     &.sortable {
+      cursor: s-resize;
+      /* cursor: n-resize */
       text-decoration: underline;
     }
 
